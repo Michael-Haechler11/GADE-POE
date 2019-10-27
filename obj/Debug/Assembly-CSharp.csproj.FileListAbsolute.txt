@@ -1,0 +1,2 @@
+C:\Michael Haechler\Unity Saves\GADE POE\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Michael Haechler\Unity Saves\GADE POE\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
