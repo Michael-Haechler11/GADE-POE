@@ -10,14 +10,35 @@ public class GameEngine : MonoBehaviour
        
         m = new Map(UnitNum, mapHeight, mapWidth);
         m.GenerateBattleField();
-        
+        InisialiseMap();
+        m.Populate();
+        m.PlaceBuildings();
+        PlaceObjects();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (gametick == 20)
+        {
+            GameEng();
+            InisialiseMap();
+            m.Populate();
+            m.PlaceBuildings();
+            PlaceObjects();
+
+            gametick = 0;
+
+        }
+        else
+        {
+            gametick++;
+        }
+
+
     }
+
+    int gametick = 0;
 
     private int mapHeight = 20;
     private int mapWidth = 20;
