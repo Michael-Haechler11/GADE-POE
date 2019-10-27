@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameEngine : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
+        txtRound.text = "Round: " + Round;
        
         m = new Map(UnitNum, mapHeight, mapWidth);
         m.GenerateBattleField();
@@ -14,28 +16,51 @@ public class GameEngine : MonoBehaviour
         m.Populate();
         m.PlaceBuildings();
         PlaceObjects();
+
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        if (gametick == 20)
+        if (runGame)
         {
-            GameEng();
-            InisialiseMap();
-            m.Populate();
-            m.PlaceBuildings();
-            PlaceObjects();
+            if (gametick == 20)
+            {
+                GameEng();
+                InisialiseMap();
+                m.Populate();
+                m.PlaceBuildings();
+                PlaceObjects();
 
-            gametick = 0;
+                gametick = 0;
 
+            }
+            else
+            {
+                gametick++;
+            }
         }
         else
         {
-            gametick++;
+            gametick = 0;
         }
 
+    }
 
+    public void PlayStop()
+    {
+        if (runGame == false)
+        {
+            runGame = true;
+            txtPlayStop.text = "Pause";
+            
+        }
+        else
+        {
+            runGame = false;
+            txtPlayStop.text = "Play";
+        }
     }
 
     int gametick = 0;
@@ -45,6 +70,7 @@ public class GameEngine : MonoBehaviour
 
     static int UnitNum = 8;
     public int Round = 1;
+    bool runGame = false;
 
     private Map m;
 
@@ -59,8 +85,23 @@ public class GameEngine : MonoBehaviour
     public GameObject ResourceBuildingsOverwatch;
     public GameObject ResourceBuildingsTalon;
 
+    public Text txtPlayStop;
+    public Text txtRound;
+    //overwatch Texts
+    //public Text txtOverwatchResourcesLeft;
+    //public Text txtOvertwatchResourcesGathered;
+    //public Text txtOverwatchUnitsLeft;
+    //Talon texts
+    //public Text txtTalonResourcesLeft;
+    //public Text txtTalonResourcesGathered;
+   // public Text txtTalonUnitsLeft;
+
+
+
     public void GameEng()
     {
+
+        txtRound.text = "Round: " + Round;
         int hero = 0;
         int villian = 0;
 
