@@ -209,11 +209,11 @@ public class GameEngine : MonoBehaviour
             Destroy(g);
         }
 
-        for(int x = 0; x < mapWidth; x++)
+        for (int x = 0; x < mapWidth; x++)
         {
-            for(int z = 0; z < mapHeight; z++)
+            for (int z = 0; z < mapHeight; z++)
             {
-                if(m.mapTiles[x,z] == Tiles.emptyTile)
+                if (m.mapTiles[x, z] == Tiles.emptyTile)
                 {
                     Instantiate(emptyTile, new Vector3(x, 0f, z), Quaternion.identity);
                 }
@@ -225,6 +225,35 @@ public class GameEngine : MonoBehaviour
                 {
                     Instantiate(meleeUnitTalon, new Vector3(x, 0f, z), Quaternion.identity);
                 }
-
+                else if (m.mapTiles[x, z] == Tiles.rangedUnitOverwatch)
+                {
+                    Instantiate(rangedUnitOverwatch, new Vector3(x, 0f, z), Quaternion.identity);
+                }
+                else if (m.mapTiles[x, z] == Tiles.rangedUnitTalon)
+                {
+                    Instantiate(rangedUnitTalon, new Vector3(x, 0f, z), Quaternion.identity);
+                }
+                else if (m.mapTiles[x, z] == Tiles.wizzardUnitNeutral)
+                {
+                    Instantiate(wizzardUnitNeutral, new Vector3(x, 0f, z), Quaternion.identity);
+                }
+                else if (m.mapTiles[x, z] == Tiles.FactoryBuildingsOverwatch)
+                {
+                    Instantiate(FactoryBuildingsOverwatch, new Vector3(x, 0f, z), Quaternion.identity);
+                }
+                else if (m.mapTiles[x, z] == Tiles.FactoryBuildingsTalon)
+                {
+                    Instantiate(FactoryBuildingsTalon, new Vector3(x, 0f, z), Quaternion.identity);
+                }
+                else if (m.mapTiles[x, z] == Tiles.ResourceBuildingsOverwatch)
+                {
+                    Instantiate(ResourceBuildingsOverwatch, new Vector3(x, 0f, z), Quaternion.identity);
+                }
+                else if (m.mapTiles[x, z] == Tiles.ResourceBuildingsTalon)
+                {
+                    Instantiate(ResourceBuildingsTalon, new Vector3(x, 0f, z), Quaternion.identity);
+                }
+            }
+        }
     }
 }
